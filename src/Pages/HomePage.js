@@ -5,9 +5,6 @@ export default class HomePage extends Component {
   render() {
     return (
       <div>
-        <header>
-          <h1>Noteful</h1>
-        </header>
         <nav>
           <FolderList folders = {this.props.folders}/>
         </nav>
