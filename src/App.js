@@ -8,14 +8,73 @@ import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
 
 export default class App extends Component {
-constructor(props){
-  super(props)
-  this.state = {
-    folders:props.list.folders,
-    notes:props.list.notes
 
-  }
+  state = {
+    folders:[],
+    notes:[]
 }
+
+
+componentDidMount(){
+ 
+const folderURL = 'http://localhost:9090/folders';
+const noteURl = 'http://localhost:9090/notes'
+
+const options = {
+  method: 'GET',
+  headers: {
+    "Content-Type": "application/json"
+  }
+};
+let folderData = fetch(folderURL, options)
+  .then(res => {
+    if(!res.ok) {
+      throw new Error('Something went wrong, please try again later.');
+    }
+    return res;
+  })
+  .then(res => res.json())
+  .then(data => {
+   console.log(data)
+
+    this.setState({
+      folders: data,
+      error: null
+    });
+  })
+  .catch(err => {
+    this.setState({
+      error: err.message
+    });
+  });
+
+  let noteData = fetch(noteURl, options)
+  .then(res => {
+    if(!res.ok) {
+      throw new Error('Something went wrong, please try again later.');
+    }
+    return res;
+  })
+  .then(res => res.json())
+  .then(data => {
+   console.log(data)
+
+    this.setState({
+      notes: data,
+      error: null
+    });
+  })
+  .catch(err => {
+    this.setState({
+      error: err.message
+    });
+  });
+return folderData && noteData
+}
+
+
+
+
 
 
   render() {
