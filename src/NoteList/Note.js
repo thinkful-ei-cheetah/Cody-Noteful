@@ -7,12 +7,11 @@ export default class Note extends Component {
     const {id,
         name,
         modified,
-        folderId,
         content} = this.props;
     return (
       <div className={id}>
         <h2>
-        <Link to={`/note/${folderId}`}>
+        <Link to={`/note/${id}`}>
           {name}
         </Link>
         </h2>

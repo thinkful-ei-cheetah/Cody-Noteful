@@ -5,6 +5,7 @@ import FolderList from '../FolderList/FolderList'
 
 export default class FolderPage extends Component {
   render() {
+    console.log('FolderPage props', this.props)
     return (
         <div>
         <nav>
@@ -12,7 +13,7 @@ export default class FolderPage extends Component {
         </nav>
         <section>
           
-          <NoteList notes={this.props.notes}/>
+          <NoteList folderId={this.props.folderId} notes={this.props.notes}/>
         </section>
       </div>
     )

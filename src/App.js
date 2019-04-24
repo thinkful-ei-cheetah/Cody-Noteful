@@ -3,6 +3,7 @@ import HomePage from './Pages/HomePage'
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import FolderPage from './Pages/FolderPage';
+import NotePage from './Pages/NotePage';
 
 export default class App extends Component {
 constructor(props){
@@ -18,7 +19,7 @@ handleChangePage =() => {
 }
 
   render() {
-    
+
 
     return (
       <div>
@@ -30,10 +31,10 @@ handleChangePage =() => {
           </h2>
         </header>
         <Route exact path="/" render={()=> <HomePage {...this.state} /> }/>
-        <nav>
-        <Route path='/Folder/:folderId' render= {( routeProps ) => <FolderPage
-        folders={this.state.folders.find(foo => foo.id === routeProps.match.params.foodId)}/> } /> 
-        </nav>
+        <Route path='/Folder/:folderId' render= {( routeProps ) =>  
+          <FolderPage folderId={routeProps.match.params.folderId} {...this.state} />} />
+        <Route path='/Note/:noteId' render= {( routeProps ) =>  
+          <NotePage noteId={routeProps.match.params.noteId} {...this.state} />} />
       </div>
     )
   }

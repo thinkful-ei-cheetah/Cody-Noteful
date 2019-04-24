@@ -3,7 +3,12 @@ import Note from './Note'
 
 export default class NoteList extends Component {
   render() {
-    const notes = this.props.notes || [];
+     let notes = this.props.notes || [];
+
+     if (this.props.folderId) {
+        notes = notes.filter(note => note.folderId === this.props.folderId)
+     }
+
      const noteData = notes.map((item, index)=> {
           const {id , name, modified, folderId, content} = item;
           return (<Note
