@@ -1,9 +1,32 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import UserContent from '../ApiContent'
 
 export default class Note extends Component {
-  render() {
+  
+    static contextType = UserContent
+    
+    handleDeleteNote= e => {
+        e.preventDefault()
+        const noteId = this.props.id
+        const noteUrl = 'http://localhost:9090/notes'
+        fetch(`${noteUrl}/${noteId}`,{
+              method: 'DELETE',
+              headers: {
+                  'content-type': 'application/json'
+                },
+              })
+            .then(res => {
+                if(!res.ok){
+                    throw new Error('unable to process at this time')
+                  }
+                  return res
+                })
+                .then(res => res.json())
+                .then(data => console.log(data) )
+              }
 
+   render() {
     const {id,
         name,
         modified,
@@ -17,7 +40,7 @@ export default class Note extends Component {
         </h2>
         <p>Date modified {modified}</p>
         <p>{content}</p>
-        <button>Delete</button>
+        <button onClick={this.handleDeleteNote}>Delete</button>
       </div>
     )
 }

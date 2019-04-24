@@ -68,20 +68,20 @@ let folderData = fetch(folderURL, options)
     this.setState({
       error: err.message
     });
+    return folderData && noteData
   });
-return folderData && noteData
 }
-
-
-
-
-
-
+handleDeleteNote = noteId => {
+  this.setState({
+    notes: this.state.notes.filter(note => note.id !== noteId)
+  })
+}
   render() {
     return (
         <UserContent.Provider value ={{
           folders:this.state.folders,
-          notes:this.state.notes
+          notes:this.state.notes,
+          delete:this.handleDeleteNote
         }}>
       <div>
 
