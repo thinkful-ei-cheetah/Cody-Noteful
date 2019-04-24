@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom'
 import UserContent from '../ApiContent'
 
 export default class Note extends Component {
-  static defaultProps ={
-    onDeleteNote: () => {},
-  }
   
     static contextType = UserContent
     
@@ -28,7 +25,6 @@ export default class Note extends Component {
                 .then(res => res.json())
                 .then(() => {
                   this.context.delete(noteId)
-                  this.props.onDeleteNote(noteId)
                 })
                 .catch(error => {
                 console.error(error)
