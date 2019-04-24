@@ -7,8 +7,8 @@ export default class NoteList extends Component {
   render() {
      let notes = this.context.notes || [];
 
-     if (this.context.folderId) {
-        notes = notes.filter(note => note.folderId === this.context.folderId)
+     if (this.props.folderId) {
+        notes = notes.filter(note => note.folderId === this.props.folderId)
      }
 
      const noteData = notes.map((item, index)=> {

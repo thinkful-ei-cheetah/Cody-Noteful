@@ -35,7 +35,7 @@ let folderData = fetch(folderURL, options)
   })
   .then(res => res.json())
   .then(data => {
-   console.log(data)
+  //  console.log(data)
 
     this.setState({
       folders: data,
@@ -57,7 +57,7 @@ let folderData = fetch(folderURL, options)
   })
   .then(res => res.json())
   .then(data => {
-   console.log(data)
+  //  console.log(data)
 
     this.setState({
       notes: data,

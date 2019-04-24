@@ -13,7 +13,6 @@ export default class FolderList extends Component {
           name= {name}
           />)
        })
-       console.log(this.context)
 
     return (
         <div>
