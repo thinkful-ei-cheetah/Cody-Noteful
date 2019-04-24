@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Folder from './Folder'
-
+import UserContent from '../ApiContent'
 export default class FolderList extends Component {
+    static contextType = UserContent
   render() {
-      let folders = this.props.folders || [];
+      let folders = this.context.folders || [];
         folders = folders.map((item, index)=> {
           const {id , name} = item;
           return (<Folder
@@ -12,7 +13,7 @@ export default class FolderList extends Component {
           name= {name}
           />)
        })
-       console.log(this.props)
+       console.log(this.context)
 
     return (
         <div>

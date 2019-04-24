@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import HomePage from './Pages/HomePage'
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom'
+import UserContent from './ApiContent'
+
+import HomePage from './Pages/HomePage'
 import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
 
@@ -14,15 +16,16 @@ constructor(props){
 
   }
 }
-handleChangePage =() => {
 
-}
 
   render() {
-
-
     return (
+        <UserContent.Provider value ={{
+          folders:this.state.folders,
+          notes:this.state.notes
+        }}>
       <div>
+
         <header>
         <h2>
           <Link to={`/`}>
@@ -36,6 +39,7 @@ handleChangePage =() => {
         <Route path='/Note/:noteId' render= {( routeProps ) =>  
           <NotePage noteId={routeProps.match.params.noteId} {...this.state} />} />
       </div>
+          </UserContent.Provider>
     )
   }
 }

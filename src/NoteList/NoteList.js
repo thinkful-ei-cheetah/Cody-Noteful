@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import Note from './Note'
+import UserContent from '../ApiContent'
 
 export default class NoteList extends Component {
+  static contextType = UserContent
   render() {
-     let notes = this.props.notes || [];
+     let notes = this.context.notes || [];
 
-     if (this.props.folderId) {
-        notes = notes.filter(note => note.folderId === this.props.folderId)
+     if (this.context.folderId) {
+        notes = notes.filter(note => note.folderId === this.context.folderId)
      }
 
      const noteData = notes.map((item, index)=> {
