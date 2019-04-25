@@ -3,9 +3,11 @@ import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import UserContent from './ApiContent'
 
+import AddNote from './NoteList/AddNote'
 import HomePage from './Pages/HomePage'
 import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
+
 
 export default class App extends Component {
 
@@ -13,8 +15,6 @@ export default class App extends Component {
     folders:[],
     notes:[]
 }
-
-
 componentDidMount(){
  
 const folderURL = 'http://localhost:9090/folders';
@@ -71,6 +71,16 @@ let folderData = fetch(folderURL, options)
     return folderData && noteData
   });
 }
+handleAddFolder = folder => {
+  this.setState({
+    folders:[...this.state.folders,folder]
+  })
+}
+handleAddNote = note => {
+  this.setState({
+    notes:[...this.state.notes, note]
+  })
+}
 handleDeleteNote = noteId => {
   this.setState({
     notes: this.state.notes.filter(note => note.id !== noteId)
@@ -81,6 +91,8 @@ handleDeleteNote = noteId => {
         <UserContent.Provider value ={{
           folders:this.state.folders,
           notes:this.state.notes,
+          addNote:this.handleAddNote,
+          addfolder:this.handleAddFolder,
           delete:this.handleDeleteNote
         }}>
       <div>
@@ -97,6 +109,7 @@ handleDeleteNote = noteId => {
           <FolderPage folderId={routeProps.match.params.folderId} {...this.state} />} />
         <Route path='/Note/:noteId' render= {( routeProps ) =>  
           <NotePage noteId={routeProps.match.params.noteId} {...this.state} />} />
+        <Route path='/addNote' render= { () => <AddNote />}/>
       </div>
           </UserContent.Provider>
     )

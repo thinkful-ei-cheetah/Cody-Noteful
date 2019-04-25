@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Note from './Note'
 import UserContent from '../ApiContent'
+import { Link } from 'react-router-dom'
 
 export default class NoteList extends Component {
   static contextType = UserContent
@@ -25,7 +26,11 @@ export default class NoteList extends Component {
     return (
         <section>
             {noteData}
-            <button>Add notes</button>
+            <button>
+              <Link to='/addNote'>
+              Add Note
+              </Link>
+              </button>
         </section>
     )
   }

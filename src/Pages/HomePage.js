@@ -9,7 +9,6 @@ export default class HomePage extends Component {
           <FolderList folders = {this.props.folders}/>
         </nav>
         <section>
-          
           <NoteList notes={this.props.notes}/>
         </section>
       </div>
