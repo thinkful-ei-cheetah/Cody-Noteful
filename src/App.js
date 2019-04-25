@@ -3,10 +3,15 @@ import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import UserContent from './ApiContent'
 
+
+
+
 import AddNote from './NoteList/AddNote'
 import HomePage from './Pages/HomePage'
 import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
+
+
 
 
 export default class App extends Component {
@@ -89,6 +94,7 @@ handleDeleteNote = noteId => {
   render() {
     return (
         <UserContent.Provider value ={{
+          history:this.props.history,
           folders:this.state.folders,
           notes:this.state.notes,
           addNote:this.handleAddNote,

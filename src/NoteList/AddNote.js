@@ -3,7 +3,6 @@ import UserContent from '../ApiContent'
 import { Link } from 'react-router-dom'
 
 export default class AddNote extends Component {
-    
     static contextType = UserContent
     handleSubmit = e => {
         e.preventDefault()
@@ -29,6 +28,7 @@ export default class AddNote extends Component {
         }) 
         .then(data =>{
             this.context.addNote(data)
+            this.context.history.push('/')
         })
         .catch(error => {
             return error
