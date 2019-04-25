@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import UserContent from '../ApiContent'
 import { Link } from 'react-router-dom'
 
 export default class AddFolder extends Component {
+  static contextType = UserContent
 
   handleSubmitFolder = e => {
     e.preventDefault()
@@ -24,6 +26,7 @@ export default class AddFolder extends Component {
       }
     }) 
     .then(data =>{
+      console.log(data)
       this.context.addFolder(data)
       this.context.history.push('/')
     })
