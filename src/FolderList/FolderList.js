@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Folder from './Folder'
 import UserContent from '../ApiContent'
+import { Link } from 'react-router-dom'
 export default class FolderList extends Component {
     static contextType = UserContent
   render() {
@@ -17,7 +18,7 @@ export default class FolderList extends Component {
     return (
         <div>
             {folders}
-            <button> Add New Folder</button>
+            <button><Link to='/addFolder'>Add New Folder</Link></button>
         </div>
             
     )

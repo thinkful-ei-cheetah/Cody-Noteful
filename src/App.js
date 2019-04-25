@@ -7,6 +7,7 @@ import UserContent from './ApiContent'
 
 
 import AddNote from './NoteList/AddNote'
+import AddFolder from './FolderList/AddFolder'
 import HomePage from './Pages/HomePage'
 import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
@@ -98,7 +99,7 @@ handleDeleteNote = noteId => {
           folders:this.state.folders,
           notes:this.state.notes,
           addNote:this.handleAddNote,
-          addfolder:this.handleAddFolder,
+          addFolder:this.handleAddFolder,
           delete:this.handleDeleteNote
         }}>
       <div>
@@ -116,6 +117,7 @@ handleDeleteNote = noteId => {
         <Route path='/Note/:noteId' render= {( routeProps ) =>  
           <NotePage noteId={routeProps.match.params.noteId} {...this.state} />} />
         <Route path='/addNote' render= { () => <AddNote />}/>
+        <Route path='/addFolder' render= { () => <AddFolder/>}/>
       </div>
           </UserContent.Provider>
     )
