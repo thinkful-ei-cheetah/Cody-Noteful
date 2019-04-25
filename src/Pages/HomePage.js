@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NoteList from '../NoteList/NoteList'
 import FolderList from '../FolderList/FolderList'
+// Statefull practice
 export default class HomePage extends Component {
   render() {
     return (
@@ -16,3 +17,18 @@ export default class HomePage extends Component {
     )
   }
 }
+//State-less Practice
+// const HomePage = props => {
+//   return (
+//     <div>
+//       <nav>
+//         <FolderList folders = {props.folders}/>
+//       </nav>
+//       <section>
+        
+//         <NoteList notes={props.notes}/>
+//       </section>
+//     </div>
+//   )
+// }
+// export default HomePage

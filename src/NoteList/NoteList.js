@@ -13,14 +13,20 @@ export default class NoteList extends Component {
 
      const noteData = notes.map((item, index)=> {
           const {id , name, modified, folderId, content} = item;
-          return (<Note
-          key={index}
-          id ={id}
-          name= {name}
-          modified={modified}
-          folderId={folderId}
-          content={content}
-          />)
+          return (
+          <UserContent.Consumer key={index}>
+            {userContent => (
+              <Note
+              
+                id ={id}
+                name= {name}
+                modified={modified}
+                folderId={folderId}
+                content={content}
+                userContent={userContent}
+              />
+            )}
+          </UserContent.Consumer>)
       })
     return (
         <section>

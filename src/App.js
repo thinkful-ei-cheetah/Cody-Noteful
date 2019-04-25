@@ -12,11 +12,30 @@ export default class App extends Component {
   state = {
     folders:[],
     notes:[]
-}
-
-
-componentDidMount(){
- 
+  }
+  
+  
+  // Promise.all([getFolders(), getNotes()])
+  //   .then(data => {
+    //     console.log(`folder data is ${data[0]}, note data is ${data[1]}`)
+    //   })
+    
+    // const options = {
+      //   method: 'GET',
+      //   headers: {
+        //     "Content-Type": "application/json"
+        //   }
+        // };
+        
+        // const getFolders = () => fetch('http://localhost:9090/folders', options)
+        // const getNotes = () => fetch('http://localhost:9090/notes', options)
+        
+        //   }
+        
+        
+        
+        
+  componentDidMount(){
 const folderURL = 'http://localhost:9090/folders';
 const noteURl = 'http://localhost:9090/notes'
 
@@ -83,22 +102,22 @@ handleDeleteNote = noteId => {
           notes:this.state.notes,
           delete:this.handleDeleteNote
         }}>
-      <div>
+          <div>
 
-        <header>
-        <h2>
-          <Link to={`/`}>
-          NoteFul
-        </Link>
-          </h2>
-        </header>
-        <Route exact path="/" render={()=> <HomePage {...this.state} /> }/>
-        <Route path='/Folder/:folderId' render= {( routeProps ) =>  
-          <FolderPage folderId={routeProps.match.params.folderId} {...this.state} />} />
-        <Route path='/Note/:noteId' render= {( routeProps ) =>  
-          <NotePage noteId={routeProps.match.params.noteId} {...this.state} />} />
-      </div>
-          </UserContent.Provider>
+            <header>
+              <h2>
+                <Link to={`/`}>
+                NoteFul
+                </Link>
+              </h2>
+            </header>
+            <Route exact path="/" render={()=> <HomePage {...this.state} /> }/>
+            <Route path='/Folder/:folderId' render= {( routeProps ) =>  
+              <FolderPage folderId={routeProps.match.params.folderId} {...this.state} />} />
+            <Route path='/Note/:noteId' render= {( routeProps ) =>  
+              <NotePage noteId={routeProps.match.params.noteId} {...this.state} />} />
+          </div>
+        </UserContent.Provider>
     )
   }
 }
