@@ -11,6 +11,7 @@ import AddFolder from './FolderList/AddFolder'
 import HomePage from './Pages/HomePage'
 import FolderPage from './Pages/FolderPage';
 import NotePage from './Pages/NotePage';
+import ErrorPage from './Pages/ErrorPage'
 
 
 
@@ -102,6 +103,7 @@ handleDeleteNote = noteId => {
           addFolder:this.handleAddFolder,
           delete:this.handleDeleteNote
         }}>
+          <ErrorPage history={this.props.history}> 
       <div>
 
         <header>
@@ -119,6 +121,7 @@ handleDeleteNote = noteId => {
         <Route path='/addNote' render= { () => <AddNote />}/>
         <Route path='/addFolder' render= { () => <AddFolder/>}/>
       </div>
+          </ErrorPage>
           </UserContent.Provider>
     )
   }

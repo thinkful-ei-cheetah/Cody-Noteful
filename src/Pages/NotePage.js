@@ -7,7 +7,7 @@ import Folder from '../FolderList/Folder'
 
 export default class NotePage extends Component {
   render() {
-      console.log('Page', this.props)
+      console.log('Note Page renders')
     const note = this.props.notes.find(note => note.id === this.props.noteId);
     const folder = this.props.folders.find(folder => folder.id === note.folderId);
 
